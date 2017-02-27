@@ -13,7 +13,7 @@
     "dev": "concurrently --kill-others \"nodemon src/server/\" \"npm run webpack-dev\" ",
     "flow": "flow check",
     "prettier": "prettier --write './src/**/*.js' --single-quote",
-    "build": "npm run webpack-build && babel ./src/server -d ./dist/server && babel ./src/shared -d ./dist/shared",
+    "build": "concurrently \"npm run webpack-build\" \"babel ./src/server -d ./dist/server --ignore ./src/server/index.js\" \"babel ./src/shared -d ./dist/shared\" ",
     "webpack-dev": "cross-env NODE_ENV=development webpack --progress --hide-modules --watch",
     "webpack-build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
   },

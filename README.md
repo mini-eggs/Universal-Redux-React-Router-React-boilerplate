@@ -14,7 +14,8 @@
 
 #### Developer build scripts
     $ yarn run dev
-        - starts webpack build for server and client
+        - starts webpack build for client 
+        - start server while using babel register to transpile
         - starts Node at http://localhost:${port}/
     $ yarn run flow
         - typechecker
@@ -23,3 +24,5 @@
 
 #### Production build scripts
     $ yarn start
+        - build production files
+        - start server
