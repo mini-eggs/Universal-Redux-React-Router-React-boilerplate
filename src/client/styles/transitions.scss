@@ -1,0 +1,61 @@
+
+@keyframes slideDown {
+  from {
+    -webkit-transform: translateY(-100%);
+    -moz-transform:    translateY(-100%);
+    -ms-transform:     translateY(-100%);
+    -o-transform:      translateY(-100%);
+    transform:         translateY(-100%);
+  }
+  to {
+    -webkit-transform: translateY(0);
+    -moz-transform:    translateY(0);
+    -ms-transform:     translateY(0);
+    -o-transform:      translateY(0);
+    transform:         translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    -webkit-transform: translateY(0);
+    -moz-transform:    translateY(0);
+    -ms-transform:     translateY(0);
+    -o-transform:      translateY(0);
+    transform:         translateY(0);
+  }
+  to {
+    -webkit-transform: translateY(-100%);
+    -moz-transform:    translateY(-100%);
+    -ms-transform:     translateY(-100%);
+    -o-transform:      translateY(-100%);
+    transform:         translateY(-100%);
+  }
+}
+
+@keyframes InitialPresentation {
+  from {
+    transform: perspective(100px) translate3d(0,1000px,-10px);
+  }
+  to {
+    transform: perspective(0) translate3d(0,0,0);
+  }
+}
+
+@keyframes TitleFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes TitleFadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}

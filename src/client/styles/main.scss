@@ -1,0 +1,214 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,900');
+@import "./reset.css";
+@import "./transitions.scss";
+
+$mobile: 748px;
+$blogHeight: 25vh;
+$blogHeightMobile: 35vh;
+$maxWidth: 600px;
+
+*:focus {
+  outline: none !important;
+}
+
+.hide {
+  display: none;
+}
+
+.translate {
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform:    translate(-50%, -50%);
+  -ms-transform:     translate(-50%, -50%);
+  -o-transform:      translate(-50%, -50%);
+  transform:         translate(-50%, -50%);
+  top:50%;
+  left: 50%;
+  width: 100%;
+}
+
+.transition {
+  transition-duration: 250ms;
+}
+
+.vert-align {
+  @extend .translate;
+  position: absolute;
+  display: block;
+  text-align: center;
+}
+
+.main-font {
+  font-weight: 800;
+  font-size: 32px;
+  line-height: 140%;
+  width: 80%;
+
+  @media (max-width: 748px) { 
+    font-size: 24px; 
+  }
+}
+
+.secondary-font {
+  font-family: 'Roboto', sans-serif;
+}
+
+html {
+  background-color: #365480;
+  min-height: 100vh;
+
+  body {
+    @extend .secondary-font;
+    margin: 0;
+    text-rendering: optimizeLegibility; 
+    -webkit-font-smoothing: antialiased;
+    line-height: 140%;
+
+    a {
+      text-decoration: none !important;
+      color: white;
+    }
+
+    .page__wrap {
+      border-radius: 2px;
+      overflow: hidden;
+      // animation-name: InitialPresentation;
+      // animation-duration: 600ms;
+      max-width: $maxWidth;
+      margin: 25px auto 100px;
+
+      @media (max-width: $mobile) {
+        animation-name: none;
+        animation-duration: 0ms;
+        margin-top: 0;
+        margin-bottom: 0;
+      }
+
+      header {
+        background-color: #333;
+
+        nav {
+
+          ul {
+            white-space: nowrap;
+            overflow-y: auto; 
+            overflox-y: hidden;
+            -webkit-overflow-scrolling: touch;
+
+            li {
+              display: inline-block;
+
+              a {
+                display: block;
+                padding: 15px;
+
+                &:hover,
+                &.active,
+                &:focus {
+                  background-color: #000;
+                }
+              }
+            }
+          }
+        }
+
+        &.transition__header {
+          transition-duration: 500ms;
+          display: none;
+          -webkit-transform: translateY(-100%);
+          -moz-transform:    translateY(-100%);
+          -ms-transform:     translateY(-100%);
+          -o-transform:      translateY(-100%);
+          transform:         translateY(-100%);
+          max-width: $maxWidth;
+          z-index: 999;
+          animation-duration: 500ms;
+          position: fixed;
+          top: 0;
+          left: 50%;
+          margin-left: -300px;
+          width: 100vw;
+
+          @media (max-width: 600px) {
+            left: 0;
+            margin-left: 0;
+          }
+        }
+      }
+
+      .content__container {
+
+        p {
+          white-space: pre-wrap;
+
+          *:focus {
+            color: #000;
+          }
+        }
+      }
+
+      article {
+        background-color: rgba(255,255,255,0.2);
+        color: white;
+        padding: 0px 15px 50px;
+
+        header {
+          margin: 0px -15px 25px;
+          height: $blogHeight;
+
+          @media (max-width: 748px) {
+            height: $blogHeightMobile;
+          }
+
+          .header__inner {
+            @extend .transition;
+            height: $blogHeight;
+            display: block;
+            position: relative;
+            background-color: rgba(0,0,0,0.25);
+
+            @media (max-width: 748px) {
+              height: $blogHeightMobile;
+            }
+
+            h1 {
+              @extend .vert-align;
+              @extend .main-font;
+              animation-name: TitleFadeIn;
+              animation-duration: 250ms;
+              opacity: 1;
+            }
+          }
+        }
+      }
+
+      .single__blog {
+        background-color: #333;
+        position: relative;
+        height: $blogHeight;
+
+        @media (max-width: 748px) {
+          height: $blogHeightMobile;
+        }
+
+        .blog__link__container {
+          @extend .transition;
+          background-color: rgba(0,0,0,0.25);
+          position: relative;
+          height: $blogHeight;
+
+          @media (max-width: 748px) {
+            height: $blogHeightMobile;
+          }
+
+          .blog__link {
+            @extend .vert-align;
+            @extend .main-font;
+            animation-name: TitleFadeIn;
+            animation-duration: 250ms;
+            opacity: 1;
+          }
+        }
+      }
+    }
+  }
+}
