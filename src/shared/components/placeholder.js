@@ -10,7 +10,9 @@ export default (props: Object) => {
       </h1>
       <div>
         Message from initial store:
-        &gt; "{props.data}"
+      </div>
+      <div>
+        {props.data}
       </div>
     </div>
   );

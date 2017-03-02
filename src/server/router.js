@@ -1,7 +1,7 @@
 // @flow
 
 import React from 'react';
-import { renderToString } from 'react-dom/server';
+import { render } from 'rapscallion';
 import { match, RouterContext } from 'react-router';
 import { Provider } from 'react-redux';
 import Template from './base/base';
@@ -23,13 +23,14 @@ const getMarkup = (req, res, store) => {
       } else if (redirect) {
         res.redirect(302, redirect.pathname + redirect.search);
       } else if (props) {
-        resolve(
-          renderToString(
-            <Provider store={store}>
-              <RouterContext {...props} />
-            </Provider>
-          )
-        );
+        const component =
+          <Provider store={store}>
+            <RouterContext {...props} />
+          </Provider>
+        render(component)
+          .toPromise()
+          .then(resolve)
+          .catch(reject)
       } else {
         reject();
       }
