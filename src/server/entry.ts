@@ -3,7 +3,7 @@ import * as Http from 'http';
 import * as Path from 'path';
 import * as Express from 'express';
 import { getPortPromise as PortFinder } from 'portfinder';
-import * as Router from './router';
+import Router from './router';
 
 if (process.env.PORT) {
   process.env.NODE_ENV = 'production';

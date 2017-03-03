@@ -9,9 +9,11 @@
     "npm": "4.1.2"
   },
   "scripts": {
-    "ts": "tsc --out output/output.js src/**/*.ts --allowJs --jsx 'react' --jsxFactory 'React.createElement' --module 'amd'",
+    "ts": "concurrently --kill-others \" npm run ts-server-dev\" ",
+    "dev": "concurrently --kill-others \" npm run ts-server-dev\" \"nodemon dist/server/entry.js\" \"npm run webpack-dev\" ",
+    "ts-server": "tsc --outDir dist/ src/**/*.ts --allowJs --jsx 'react' --jsxFactory 'React.createElement' --module 'umd' --moduleResolution 'node' --types 'node' --lib 'ES7'",
+    "ts-server-dev": "tsc --outDir dist/entry.js src/**/*.ts --allowJs --jsx 'react' --jsxFactory 'React.createElement' --module 'umd' --moduleResolution 'node' --types 'node' --lib 'ES7' --watch",
     "start": "npm run build && node dist/server/entry.js",
-    "dev": "concurrently --kill-others \"nodemon src/server/\" \"npm run webpack-dev\" ",
     "flow": "flow check",
     "prettier": "prettier --write './src/**/*.js' --single-quote",
     "build": "concurrently \"npm run webpack-build\" \"babel ./src/server -d ./dist/server --ignore ./src/server/index.js\" \"babel ./src/shared -d ./dist/shared\" ",
@@ -19,6 +21,7 @@
     "webpack-build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
   },
   "dependencies": {
+    "@types/node": "^7.0.5",
     "babel-cli": "^6.23.0",
     "babel-core": "^6.23.1",
     "babel-loader": "^6.3.0",
