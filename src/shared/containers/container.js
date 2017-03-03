@@ -8,12 +8,12 @@ export default (props: Object) => {
     <div>
       <header>
         <div>
-          <Link to="/">
+          <Link style={{ color: 'blue' }} to="/">
             Go to placeholder page 1
           </Link>
         </div>
         <div>
-          <Link to="/placeholder2">
+          <Link style={{ color: 'blue' }} to="/placeholder2">
             Go to placeholder page 2
           </Link>
         </div>

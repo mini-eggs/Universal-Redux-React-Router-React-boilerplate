@@ -41,7 +41,7 @@
     "portfinder": "^1.0.13",
     "prettier": "^0.17.1",
     "pug": "^2.0.0-beta11",
-    "rapscallion": "^2.1.0",
+    "rapscallion": "^2.1.1",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "react-redux": "^5.0.2",

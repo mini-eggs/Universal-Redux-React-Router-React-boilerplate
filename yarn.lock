@@ -3627,9 +3627,9 @@ range-parser@~1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/range-parser/-/range-parser-1.2.0.tgz#f49be6b487894ddc40dcc94a322f611092e00d5e"
 
-rapscallion@^2.1.0:
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/rapscallion/-/rapscallion-2.1.0.tgz#c00d5b7f3d70a5855379532a03e5b5126f70cc0f"
+rapscallion@^2.1.1:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/rapscallion/-/rapscallion-2.1.1.tgz#d0103fc374530fab923bc5ff16177bb6d6f7bd92"
   dependencies:
     adler-32 "^1.0.0"
     bluebird "^3.4.7"
