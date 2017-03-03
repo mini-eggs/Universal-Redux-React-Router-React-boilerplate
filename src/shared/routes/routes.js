@@ -1,5 +1,3 @@
-// @flow
-
 import React from 'react';
 import {
   Router,
@@ -24,6 +22,6 @@ export const routes = (
   </Router>
 );
 
-export default (props: Object) => {
+export default (props) => {
   return routes;
 };

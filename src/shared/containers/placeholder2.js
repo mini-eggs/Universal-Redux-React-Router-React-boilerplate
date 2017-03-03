@@ -1,5 +1,3 @@
-// @flow
-
 import React from 'react';
 import { connect } from 'react-redux';
 import PlaceholderTwo from '../components/placeholder2';

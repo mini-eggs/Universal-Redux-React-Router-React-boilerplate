@@ -1,8 +1,6 @@
-// @flow
-
 import { createStore } from 'redux';
 import Reducers from '../reducers/reducers';
 
-export default (preloadedState: Object) => {
+export default (preloadedState) => {
   return createStore(Reducers, preloadedState);
 };

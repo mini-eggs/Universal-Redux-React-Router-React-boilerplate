@@ -1,5 +1,3 @@
-// @flow
-
 import React from 'react';
 import { renderToString } from 'react-dom/server';
 import { match, RouterContext } from 'react-router';
@@ -42,7 +40,7 @@ const errorHandler = (req, res, err) => {
   res.send('Error');
 };
 
-export default (app: Object) => {
+export default (app) => {
   app.get('*', async (req, res) => {
     try {
       const store = configureStore({});

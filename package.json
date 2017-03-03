@@ -9,6 +9,7 @@
     "npm": "4.1.2"
   },
   "scripts": {
+    "ts": "tsc --out output/output.js src/**/*.ts --allowJs --jsx 'react' --jsxFactory 'React.createElement' --module 'amd'",
     "start": "npm run build && node dist/server/entry.js",
     "dev": "concurrently --kill-others \"nodemon src/server/\" \"npm run webpack-dev\" ",
     "flow": "flow check",
@@ -51,7 +52,7 @@
     "sass-loader": "^5.0.1",
     "style-loader": "^0.13.1",
     "ts-loader": "^2.0.0",
-    "typescript": "^2.1.6",
+    "typescript": "^2.2.1",
     "webpack": "^2.2.1",
     "webpack-node-externals": "^1.5.4"
   }

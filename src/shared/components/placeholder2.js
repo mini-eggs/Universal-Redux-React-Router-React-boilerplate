@@ -1,8 +1,6 @@
-// @flow
-
 import React from 'react';
 
-export default (props: Object) => {
+export default (props) => {
   return (
     <div>
       <h1>
