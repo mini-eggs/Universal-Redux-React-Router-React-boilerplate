@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "allowJs": true,
+    "outDir": "dist/",
+    "jsx": "react",
+    "jsxFactory": "React.createElement",
+    "module": "umd",
+    "moduleResolution": "node",
+    "types": [
+      "node"
+    ],
+    "lib": [
+      "ES7"
+    ],
+    "pretty": true
+  },
+  "include": [
+    "src/server/**/*.ts",
+    "src/shared/**/*.ts"
+  ]
+}

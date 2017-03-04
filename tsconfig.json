@@ -1,0 +1,22 @@
+{
+  "compileOnSave": true,
+  "compilerOptions": {
+    "allowJs": true,
+    "outFile": "dist/client/scripts/bundle.js",
+    "module": "amd",
+    "jsx": "react",
+    "jsxFactory": "React.createElement",
+    "moduleResolution": "node",
+    "types": [
+    ],
+    "lib": [
+      "ES7",
+      "dom"
+    ],
+    "pretty": true
+  },
+  "include": [
+    "src/client/**/*.ts",
+    "src/client/**/*.tsx"
+  ]
+}
