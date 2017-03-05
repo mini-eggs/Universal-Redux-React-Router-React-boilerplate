@@ -1,6 +1,9 @@
-@import url(https://fonts.googleapis.com/css?family=Kalam|Droid+Sans+Mono);
-@import "./reset.css";
+@import "./reset.scss";
+
+*:focus {
+  outline: none !important;
+}
 
 body {
-  font-family: Droid Sans Mono, sans-serif;
+  font-family: sans-serif;
 }

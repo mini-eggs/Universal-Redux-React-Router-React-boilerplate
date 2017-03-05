@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "allowJs": true,
+    "allowJs": false,
     "outDir": "dist/",
     "jsx": "react",
     "jsxFactory": "React.createElement",

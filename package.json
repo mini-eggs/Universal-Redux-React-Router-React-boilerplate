@@ -9,13 +9,12 @@
     "npm": "4.1.2"
   },
   "scripts": {
-    "ts": "tsc -p ./tsconfig.client.json",
+    "ts-client": "cross-env NODE_ENV=production rollup -c",
+    "ts-client-dev": "cross-env NODE_ENV=development rollup -c -w",
     "ts-server": "tsc -p ./tsconfig.server.json",
     "ts-server-dev": "tsc -p ./tsconfig.server.json -w",
-    "dev": "concurrently --kill-others \" npm run ts-server-dev\" \"nodemon dist/server/entry.js\" ",
-    "start": "npm run build && node dist/server/entry.js",
-    "webpack-dev": "cross-env NODE_ENV=development webpack --progress --hide-modules --watch",
-    "webpack-build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
+    "dev": "concurrently --kill-others \" npm run ts-client-dev\" \" npm run ts-server-dev\" \"nodemon dist/server/entry.js\" ",
+    "start": "npm run ts-client && npm run ts-server && nodemon dist/server/entry.js"
   },
   "dependencies": {
     "@types/node": "^7.0.5",
@@ -27,6 +26,7 @@
     "empty": "^0.10.1",
     "express": "^4.14.1",
     "extract-text-webpack-plugin": "^2.0.0-beta",
+    "gulp": "^3.9.1",
     "node-sass": "^4.5.0",
     "nodemon": "^1.11.0",
     "portfinder": "^1.0.13",
@@ -37,6 +37,14 @@
     "react-redux": "^5.0.2",
     "react-router": "^3.0.2",
     "redux": "^3.6.0",
+    "rollup": "^0.41.4",
+    "rollup-plugin-commonjs": "^7.0.0",
+    "rollup-plugin-node-resolve": "^2.0.0",
+    "rollup-plugin-replace": "^1.1.1",
+    "rollup-plugin-sass": "^0.4.9",
+    "rollup-plugin-typescript": "^0.8.1",
+    "rollup-plugin-uglify": "^1.0.1",
+    "rollup-watch": "^3.2.2",
     "router": "^1.1.5",
     "rxjs": "^5.1.0",
     "sass-loader": "^5.0.1",

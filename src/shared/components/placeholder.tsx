@@ -1,6 +1,10 @@
 import * as React from 'react';
 
-export default (props) => {
+interface Props {
+    data: Object
+}
+
+export default (props: Props) => {
   return (
     <div>
       <h1>
@@ -8,7 +12,9 @@ export default (props) => {
       </h1>
       <div>
         Message from initial store:
-        &gt; "{props.data}"
+      </div>
+      <div>
+        {props.data}
       </div>
     </div>
   );

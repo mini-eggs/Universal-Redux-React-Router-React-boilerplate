@@ -1,5 +1,3 @@
-// @flow
-
 export default `
   <!DOCTYPE html>
   <html lang="en">

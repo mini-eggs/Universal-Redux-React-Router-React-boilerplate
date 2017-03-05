@@ -1,2 +1,2 @@
-import './scripts/main';
-import './styles/main.scss';
+import './scripts/main.tsx'
+import './styles/main.scss'

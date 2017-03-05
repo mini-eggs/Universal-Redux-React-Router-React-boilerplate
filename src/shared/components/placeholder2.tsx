@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-export default (props) => {
+export default () => {
   return (
     <div>
       <h1>
