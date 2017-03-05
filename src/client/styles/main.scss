@@ -1,9 +1,88 @@
+@import "./bootstrap.scss";
 @import "./reset.scss";
+
+$radius: 30px;
+
+img {
+  max-width: 100%;
+}
 
 *:focus {
   outline: none !important;
 }
 
+* {
+  text-decoration: none !important;
+}
+
 body {
   font-family: sans-serif;
+  background-color: #f1f1f1;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  line-height: 140%;
+}
+
+.aBrand {
+  height: 35vh;
+  text-align: center;
+  line-height: 25vh;
+  color: white;
+  font-size: 32px;
+  position: relative;
+  padding-bottom: 50px;
+
+  img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    max-width: 25%;
+    max-height: 50%;
+    margin-top: -50px;
+    transform: translate(-50%, -50%);
+    border: solid white 2px;
+  }
+}
+
+.aPage {
+  margin-top: -100px;
+  background-color: white;
+  border-top-left-radius: $radius;
+  border-top-right-radius: $radius;
+}
+
+.clear {
+  clear: both;
+}
+
+.container {
+  position: relative;
+}
+
+.aLinkContainer {
+  border-top-left-radius: $radius;
+  border-top-right-radius: $radius;
+  background-color: #f1f1f1;
+
+  .aLink {
+    padding: 25px;
+    font-size: 24px;
+    text-align: center;
+  }
+
+  .aLinkActive {
+    border-top-left-radius: $radius;
+    border-top-right-radius: $radius;
+    text-align: center;
+    background-color: white;
+  }
+}
+
+.aContent {
+  padding: 25px;
+  min-height: 75vh;
+}
+
+h1 {
+  font-size: 28px;
 }
