@@ -3,7 +3,7 @@ export default `
   <html lang="en">
     <head>
       <meta charset="utf-8">
-      <meta content="initial-scale=1,maximum-scale=1,user-scalable=no,width=device-width" name="viewport">
+      <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <title>Boilerplate</title>
       <link href="/styles/bundle.css" rel="stylesheet" />

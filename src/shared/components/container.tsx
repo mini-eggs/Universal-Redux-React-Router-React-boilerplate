@@ -13,7 +13,7 @@ export default (props: Props) => {
       <CustomHeader/>
       <div className="clear"/>
       <div className="container">
-        <div className="aPage">
+        <div className="aPage col-xs-12 col-sm-8 col-sm-offset-2">
           <CustomNavigation/>
           <div className="clear"/>
           <div className="aContent">
