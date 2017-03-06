@@ -5,8 +5,8 @@ import * as Express from 'express';
 import { getPortPromise as PortFinder } from 'portfinder';
 import Router from './router';
 
-if (process.env.PORT) {
-  process.env.NODE_ENV = 'production';
+if (process.env.NODE_ENV === 'production') {
+  process.env.PORT = 80
 }
 
 const app = Express();

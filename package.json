@@ -13,8 +13,8 @@
     "ts-client-dev": "cross-env NODE_ENV=development rollup -c -w",
     "ts-server": "tsc -p ./tsconfig.server.json",
     "ts-server-dev": "tsc -p ./tsconfig.server.json -w",
-    "dev": "concurrently --kill-others \" npm run ts-client-dev\" \" npm run ts-server-dev\" \"nodemon NODE_ENV=development dist/server/entry.js\" ",
-    "start": "npm run ts-client && npm run ts-server && node NODE_ENV=production dist/server/entry.js"
+    "dev": "concurrently --kill-others \" npm run ts-client-dev\" \" npm run ts-server-dev\" \"NODE_ENV=development nodemon dist/server/entry.js\" ",
+    "start": "npm run ts-client && npm run ts-server && NODE_ENV=production node dist/server/entry.js"
   },
   "dependencies": {
     "@types/node": "^7.0.5",
