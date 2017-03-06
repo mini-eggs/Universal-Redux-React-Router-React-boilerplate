@@ -11,6 +11,11 @@ if (process.env.NODE_ENV === 'production') {
 const app = Express();
 const server = Http.createServer(app);
 
+app.all('*', (req, res, next) => {
+  console.log( req.originalUrl );
+  next();
+});
+
 app.use(
   '/scripts',
   Express.static(Path.join(__dirname, '..', '..', 'dist', 'client', 'scripts'))

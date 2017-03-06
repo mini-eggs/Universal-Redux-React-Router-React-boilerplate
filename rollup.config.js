@@ -6,12 +6,12 @@ import sass from 'rollup-plugin-sass';
 import uglify from 'rollup-plugin-uglify';
 
 const config = {
-  entry: './src/client/entry.ts',
-  dest: './dist/client/scripts/bundle.js',
+  entry: 'src/client/entry.ts',
+  dest: 'dist/client/scripts/bundle.js',
   format: 'es',
   plugins: [
     sass({
-      output: './dist/client/styles/bundle.css',
+      output: 'dist/client/styles/bundle.css',
     }),
     nodeResolve({
       module: true,
