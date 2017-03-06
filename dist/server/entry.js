@@ -19,10 +19,6 @@
     }
     var app = Express();
     var server = Http.createServer(app);
-    app.all('*', function (req, res, next) {
-        console.log(req.originalUrl);
-        next();
-    });
     app.use('/scripts', Express.static(Path.join(__dirname, '..', '..', 'dist', 'client', 'scripts')));
     app.use('/styles', Express.static(Path.join(__dirname, '..', '..', 'dist', 'client', 'styles')));
     router_1["default"](app);

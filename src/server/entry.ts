@@ -11,11 +11,6 @@ if (process.env.NODE_ENV === 'production') {
 const app = Express();
 const server = Http.createServer(app);
 
-app.all('*', (req, res, next) => {
-  console.log( req.originalUrl );
-  next();
-});
-
 app.use(
   '/scripts',
   Express.static(Path.join(__dirname, '..', '..', 'dist', 'client', 'scripts'))
@@ -30,6 +25,7 @@ Router(app);
 if (process.env.PORT) {
   server.listen(process.env.PORT);
 } else {
+  
   const serverHasStarted = port => {
     console.log(
       `==> 🌎  Listening on port ${port}. Open up http://localhost:${port}/ in your browser.`
