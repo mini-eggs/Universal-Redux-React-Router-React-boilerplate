@@ -48,8 +48,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 // import Triangly from './applications/triangly/triangly';
 
-if (process.env.PORT) {
-  process.env.NODE_ENV = 'production';
+if (process.env.NODE_ENV === 'production') {
+  process.env.PORT = 80;
 }
 
 var app = (0, _express2.default)();
@@ -94,11 +94,9 @@ io.on('connection', function (socket) {
 if (process.env.PORT) {
   server.listen(process.env.PORT);
 } else {
+
   var serverHasStarted = function serverHasStarted(port) {
-    // Open(`http://localhost:${port}/`)
-    console.log();
     console.log('==> \uD83C\uDF0E  http://localhost:' + port + '/');
-    console.log();
   };
 
   var serverHasNotStarted = function serverHasNotStarted(err) {

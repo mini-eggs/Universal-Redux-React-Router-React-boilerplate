@@ -18,8 +18,8 @@ import TwitterBot, {
 } from './applications/twitterBot/twitterBot';
 // import Triangly from './applications/triangly/triangly';
 
-if (process.env.PORT) {
-  process.env.NODE_ENV = 'production';
+if (process.env.NODE_ENV === 'production') {
+  process.env.PORT = 80;
 }
 
 const app = Express();
@@ -64,11 +64,9 @@ Router(app);
 if (process.env.PORT) {
   server.listen(process.env.PORT);
 } else {
+  
   const serverHasStarted = port => {
-    // Open(`http://localhost:${port}/`)
-    console.log();
     console.log(`==> 🌎  http://localhost:${port}/`);
-    console.log();
   };
 
   const serverHasNotStarted = err => {

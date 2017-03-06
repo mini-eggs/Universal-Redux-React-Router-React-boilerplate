@@ -9,7 +9,7 @@
     "npm": "4.1.2"
   },
   "scripts": {
-    "start": "npm run build && node dist/server/env.js",
+    "start": "NODE_ENV=production node dist/server/env.js",
     "dev": "concurrently --kill-others \"nodemon src/server/\" \"npm run webpack-dev\" ",
     "flow": "flow check",
     "prettier": "prettier --write './src/**/*.js' --single-quote",
