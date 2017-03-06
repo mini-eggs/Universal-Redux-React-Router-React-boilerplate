@@ -9,7 +9,7 @@ var extractSass = new ExtractTextPlugin({
 });
 
 module.exports = {
-  entry: ['babel-polyfill', path.join(__dirname, 'src', 'client') + '/entry.js'],
+  entry: path.join(__dirname, 'src', 'client') + '/entry.js',
   output: {
     path: path.join(__dirname, 'dist', 'client', 'scripts'),
     filename: 'bundle.js'
