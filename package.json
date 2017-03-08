@@ -9,8 +9,7 @@
     "npm": "4.1.2"
   },
   "scripts": {
-    "upload": "scp -i keys/cloud.key -r dist ubuntu@208.113.133.24:project && scp -i keys/cloud.key -r .env ubuntu@208.113.133.24:project",
-    "server": "ssh -i keys/cloud.key ubuntu@208.113.133.24",
+    "connect": "ssh -i keys/cloud.key ubuntu@208.113.133.24",
     "start": "NODE_ENV=production node dist/server/env.js",
     "dev": "concurrently --kill-others \"nodemon src/server/\" \"npm run webpack-dev\" ",
     "flow": "flow check",

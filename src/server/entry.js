@@ -12,7 +12,7 @@ import Router from './router';
 import Legalesee, {
   LegaleseeSockets
 } from './applications/legalesee/legalesee';
-import RestroomRate from './applications/restroomrate/restroomrate';
+// import RestroomRate from './applications/restroomrate/restroomrate';
 import TwitterBot, {
   TwitterBotSockets
 } from './applications/twitterBot/twitterBot';
@@ -38,7 +38,7 @@ app.use( '/styles', Express.static(Path.join(__dirname, '..', '..', 'dist', 'cli
  * Routing per application
  */
 Legalesee(app, jsonParser);
-RestroomRate(app, jsonParser);
+// RestroomRate(app, jsonParser);
 TwitterBot(app, jsonParser);
 // Triangly(app, jsonParser);
 
