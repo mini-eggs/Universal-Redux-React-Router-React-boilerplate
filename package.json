@@ -9,7 +9,6 @@
     "npm": "4.1.2"
   },
   "scripts": {
-    "connect": "ssh -i keys/cloud.key ubuntu@208.113.133.24",
     "start": "NODE_ENV=production node dist/server/env.js",
     "dev": "concurrently --kill-others \"nodemon src/server/\" \"npm run webpack-dev\" ",
     "flow": "flow check",
@@ -33,6 +32,7 @@
     "babel-register": "^6.23.0",
     "background-image-fade-in": "^0.4.4",
     "body-parser": "^1.16.1",
+    "canvas": "^1.6.4",
     "compression-webpack-plugin": "^0.3.2",
     "concurrently": "^3.3.0",
     "contentful": "^3.8.1",

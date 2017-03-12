@@ -4,7 +4,7 @@ export default props => {
   return new Promise((resolve, reject) => {
     Request(props.url, (error, response, buffer) => {
       if (error) {
-        reject(err);
+        reject(error);
       } else {
         resolve({ response: response, buffer: buffer });
       }

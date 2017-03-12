@@ -16,11 +16,7 @@ import RestroomRate from './applications/restroomrate/restroomrate';
 import TwitterBot, {
   TwitterBotSockets
 } from './applications/twitterBot/twitterBot';
-// import Triangly from './applications/triangly/triangly';
-
-if (process.env.NODE_ENV === 'production') {
-  process.env.PORT = 80;
-}
+import Triangly from './applications/triangly/triangly';
 
 const app = Express();
 const server: Object = Http.createServer(app);
@@ -40,7 +36,7 @@ app.use( '/styles', Express.static(Path.join(__dirname, '..', '..', 'dist', 'cli
 Legalesee(app, jsonParser);
 RestroomRate(app, jsonParser);
 TwitterBot(app, jsonParser);
-// Triangly(app, jsonParser);
+Triangly(app, jsonParser);
 
 /**
  * Cache routes
