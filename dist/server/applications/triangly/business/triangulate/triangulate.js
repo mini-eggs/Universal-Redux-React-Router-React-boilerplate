@@ -24,6 +24,9 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
 
 // curl -H "Content-Type: application/json" -X POST -d '{ "image": "https://www.celpip.ca/wp-content/uploads/2015/05/home_madeincanada5-1.png" }' http://localhost:8000/triangly/triangulate
 
+// curl -H "Content-Type: application/json" -X POST -d '{ "image": "https://www.celpip.ca/wp-content/uploads/2015/05/home_madeincanada5-1.png" }' https://restroomrate.herokuapp.com/triangly/triangulate
+
+
 var defaultOptions = {
   accuracy: 0.7,
   blur: 40,

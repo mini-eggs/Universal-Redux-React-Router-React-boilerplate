@@ -94,10 +94,9 @@ export default async (req: Object, res: Object) => {
     const inputBuffer = await getBuffer(fileName);
     const outputBuffer = await triangulate(inputBuffer, fileName, options);
     const imageURL = await UploadImage(outputBuffer.toString('base64'));
-    // deleteFiles(fileName);
+    deleteFiles(fileName);
     Complete(req, res, imageURL);
   } catch (err) {
-    console.log(err)
     Failure(req, res, err);
   }
 };
