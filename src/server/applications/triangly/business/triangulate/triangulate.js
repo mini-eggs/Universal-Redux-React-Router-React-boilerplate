@@ -2,6 +2,9 @@
 
 // curl -H "Content-Type: application/json" -X POST -d '{ "image": "https://www.celpip.ca/wp-content/uploads/2015/05/home_madeincanada5-1.png" }' http://localhost:8000/triangly/triangulate
 
+// curl -H "Content-Type: application/json" -X POST -d '{ "image": "https://www.celpip.ca/wp-content/uploads/2015/05/home_madeincanada5-1.png" }' https://restroomrate.herokuapp.com/triangly/triangulate
+
+
 import Triangulate from 'triangulate-image';
 import Request from 'request';
 import Fs from 'fs';
@@ -91,9 +94,10 @@ export default async (req: Object, res: Object) => {
     const inputBuffer = await getBuffer(fileName);
     const outputBuffer = await triangulate(inputBuffer, fileName, options);
     const imageURL = await UploadImage(outputBuffer.toString('base64'));
-    deleteFiles(fileName);
+    // deleteFiles(fileName);
     Complete(req, res, imageURL);
   } catch (err) {
+    console.log(err)
     Failure(req, res, err);
   }
 };
