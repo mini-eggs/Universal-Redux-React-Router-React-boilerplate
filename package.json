@@ -9,7 +9,6 @@
     "npm": "4.1.2"
   },
   "scripts": {
-    "postinstall": "npm run build",
     "start": "NODE_ENV=production node dist/server/entry.js",
     "dev": "concurrently --kill-others \"nodemon src/server/\" \"npm run webpack-dev\" ",
     "flow": "flow check",
