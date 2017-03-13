@@ -9,9 +9,6 @@ import BodyParser from 'body-parser';
 import ApiCache from 'apicache';
 import { getPortPromise as PortFinder } from 'portfinder';
 import Router from './router';
-import Legalesee, {
-  LegaleseeSockets
-} from './applications/legalesee/legalesee';
 import RestroomRate from './applications/restroomrate/restroomrate';
 import TwitterBot, {
   TwitterBotSockets
@@ -27,19 +24,12 @@ const cache = ApiCache.middleware;
 /**
  * Static files
  */
-app.use(
-  '/scripts',
-  Express.static(Path.join(__dirname, '..', '..', 'dist', 'client', 'scripts'))
-);
-app.use(
-  '/styles',
-  Express.static(Path.join(__dirname, '..', '..', 'dist', 'client', 'styles'))
-);
+app.use('/scripts', Express.static(`${__dirname}/../../dist/client/scripts`));
+app.use('/styles', Express.static(`${__dirname}/../../dist/client/styles`));
 
 /**
  * Routing per application
  */
-Legalesee(app, jsonParser);
 RestroomRate(app, jsonParser);
 TwitterBot(app, jsonParser);
 Triangly(app, jsonParser);
@@ -53,7 +43,6 @@ app.use(cache('30 minutes'));
  * Socketing per application
  */
 io.on('connection', socket => {
-  LegaleseeSockets(socket);
   TwitterBotSockets(socket);
 });
 
@@ -66,14 +55,13 @@ Router(app);
 if (process.env.PORT) {
   server.listen(process.env.PORT);
 } else {
+  
   const serverHasStarted = port => {
     console.log(`==> 🌎  http://localhost:${port}/`);
   };
 
   const serverHasNotStarted = err => {
-    console.log(
-      'Something went wrong while trying to start the server. Error below:'
-    );
+    console.log('Something went wrong while trying to start the server. Error below:');
     console.log(err);
   };
 
