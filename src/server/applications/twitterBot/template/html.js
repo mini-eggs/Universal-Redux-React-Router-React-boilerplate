@@ -210,4 +210,4 @@ export default `
       </script>
     </body>
   </html>
-`
+`;

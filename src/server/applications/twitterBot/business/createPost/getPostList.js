@@ -28,8 +28,8 @@ const getSingleTweetList = (client, props, last) => {
       response
     ) {
       if (error) {
-        console.log('here')
-        console.log(error)
+        console.log('here');
+        console.log(error);
         reject(error);
       } else {
         const data = {

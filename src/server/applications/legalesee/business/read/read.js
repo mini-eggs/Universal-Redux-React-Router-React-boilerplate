@@ -3,7 +3,9 @@
 import Axios from 'axios';
 
 const watson = require('watson-developer-cloud');
-const alchemy_language = watson.alchemy_language({ api_key: process.env.ALCHEMY_API_KEY });
+const alchemy_language = watson.alchemy_language({
+  api_key: process.env.ALCHEMY_API_KEY
+});
 
 // example post
 // curl -H "Content-Type: application/json" -X POST -d '{"text":"here is some terms of service", "type": "text"}' http://localhost:8080/legalesee/read

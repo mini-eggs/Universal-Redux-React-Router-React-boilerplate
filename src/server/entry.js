@@ -1,4 +1,4 @@
-// @flow  
+// @flow
 
 import 'babel-polyfill';
 import Http from 'http';
@@ -27,8 +27,14 @@ const cache = ApiCache.middleware;
 /**
  * Static files
  */
-app.use( '/scripts', Express.static(Path.join(__dirname, '..', '..', 'dist', 'client', 'scripts')) );
-app.use( '/styles', Express.static(Path.join(__dirname, '..', '..', 'dist', 'client', 'styles')) );
+app.use(
+  '/scripts',
+  Express.static(Path.join(__dirname, '..', '..', 'dist', 'client', 'scripts'))
+);
+app.use(
+  '/styles',
+  Express.static(Path.join(__dirname, '..', '..', 'dist', 'client', 'styles'))
+);
 
 /**
  * Routing per application
@@ -60,7 +66,6 @@ Router(app);
 if (process.env.PORT) {
   server.listen(process.env.PORT);
 } else {
-  
   const serverHasStarted = port => {
     console.log(`==> 🌎  http://localhost:${port}/`);
   };

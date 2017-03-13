@@ -1,26 +1,24 @@
 import Request from 'request';
 
-export default props => {
+export default image => {
   return new Promise((resolve, reject) => {
     const headers = {
       Accept: 'application/json',
       'Content-Type': 'application/json',
-      Authorization: 'Client-ID ' + imgurKey
+      Authorization: 'Client-ID ' + process.env.IMGUR_CLIENT_ID
     };
 
-    const data = {
-      url: 'https://api.imgur.com/3/upload',
+    const options = {
+      url: 'https://api.imgur.com/3/image',
       method: 'POST',
       headers: headers,
-      body: JSON.stringify({ image: props.image })
+      body: JSON.stringify({ image: image })
     };
 
-    Request(data, (error, response, buffer) => {
-      if (error) {
-        reject(err);
-      } else {
-        resolve({ response: response, buffer: buffer });
-      }
+    Request(options, (error, response, buffer) => {
+      if (error) reject(err);
+      const link = JSON.parse(response.body).data.link;
+      resolve(link.replace('http://', 'https://'));
     });
   });
 };
