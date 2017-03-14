@@ -13,7 +13,9 @@ import RestroomRate from './applications/restroomrate/restroomrate';
 import TwitterBot, {
   TwitterBotSockets
 } from './applications/twitterBot/twitterBot';
-import Triangly from './applications/triangly/triangly';
+import Triangly, {
+  TrianglySockets
+} from './applications/triangly/triangly';
 
 const app = Express();
 const server: Object = Http.createServer(app);
@@ -48,6 +50,7 @@ app.use(cache('30 minutes'));
  * Socketing per application
  */
 io.on('connection', socket => {
+  TrianglySockets(socket);
   TwitterBotSockets(socket);
 });
 
