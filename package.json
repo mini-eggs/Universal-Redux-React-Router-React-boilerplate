@@ -9,6 +9,7 @@
     "npm": "4.1.2"
   },
   "scripts": {
+    "postinstall": "cd node_modules/canvas && node-gyp rebuild",
     "start": "NODE_ENV=production node dist/server/entry.js",
     "dev": "concurrently --kill-others \"nodemon src/server/\" \"npm run webpack-dev\" ",
     "flow": "flow check",
@@ -49,6 +50,7 @@
     "lodash": "^4.17.4",
     "markov-ultra": "^1.0.6",
     "mysql": "^2.13.0",
+    "node-gyp": "^3.5.0",
     "node-lmdb": "^0.4.3",
     "node-sass": "^4.5.0",
     "nodemon": "^1.11.0",
