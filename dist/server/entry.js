@@ -53,6 +53,11 @@ var jsonParser = _bodyParser2.default.json(server);
 var cache = _apicache2.default.middleware;
 
 /**
+ * Up max post size
+ */
+app.use((0, _bodyParser2.default)({ limit: '50mb' }));
+
+/**
  * Static files
  */
 app.use('/scripts', _express2.default.static(__dirname + '/../../dist/client/scripts'));

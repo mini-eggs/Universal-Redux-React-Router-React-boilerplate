@@ -22,6 +22,11 @@ const jsonParser = BodyParser.json(server);
 const cache = ApiCache.middleware;
 
 /**
+ * Up max post size
+ */
+app.use(BodyParser({ limit: '50mb' }));
+
+/**
  * Static files
  */
 app.use('/scripts', Express.static(`${__dirname}/../../dist/client/scripts`));
