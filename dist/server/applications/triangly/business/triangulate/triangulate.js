@@ -47,47 +47,48 @@ var triangulate = function triangulate(buffer, options) {
   });
 };
 
-exports.default = function () {
-  var _ref = _asyncToGenerator(regeneratorRuntime.mark(function _callee(req, res) {
-    var props, image, options, outputBuffer, imageURL;
-    return regeneratorRuntime.wrap(function _callee$(_context) {
-      while (1) {
-        switch (_context.prev = _context.next) {
-          case 0:
-            props = req.body;
-            image = props.image;
-            options = Object.assign({}, defaultOptions, props.options);
-            _context.prev = 3;
-            _context.next = 6;
-            return triangulate(Buffer.from(image, 'base64'), options);
+exports.default = function (socket) {
+  socket.on('triangly/triangulate/create', function () {
+    var _ref = _asyncToGenerator(regeneratorRuntime.mark(function _callee(props) {
+      var image, options, outputBuffer, imageURL;
+      return regeneratorRuntime.wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              image = props.image;
+              options = Object.assign({}, defaultOptions, props.options);
+              _context.prev = 2;
+              _context.next = 5;
+              return triangulate(Buffer.from(image, 'base64'), options);
 
-          case 6:
-            outputBuffer = _context.sent;
-            _context.next = 9;
-            return (0, _shared.UploadImage)(outputBuffer.toString('base64'));
+            case 5:
+              outputBuffer = _context.sent;
+              _context.next = 8;
+              return (0, _shared.UploadImage)(outputBuffer.toString('base64'));
 
-          case 9:
-            imageURL = _context.sent;
+            case 8:
+              imageURL = _context.sent;
 
-            (0, _shared.Complete)(req, res, imageURL);
-            _context.next = 16;
-            break;
+              socket.emit('triangly/triangulate/complete', { image: imageURL });
+              _context.next = 15;
+              break;
 
-          case 13:
-            _context.prev = 13;
-            _context.t0 = _context['catch'](3);
+            case 12:
+              _context.prev = 12;
+              _context.t0 = _context['catch'](2);
 
-            (0, _shared.Failure)(req, res, _context.t0);
+              socket.emit('triangly/triangulate/failure', { error: _context.t0 });
 
-          case 16:
-          case 'end':
-            return _context.stop();
+            case 15:
+            case 'end':
+              return _context.stop();
+          }
         }
-      }
-    }, _callee, undefined, [[3, 13]]);
-  }));
+      }, _callee, undefined, [[2, 12]]);
+    }));
 
-  return function (_x, _x2) {
-    return _ref.apply(this, arguments);
-  };
-}();
+    return function (_x) {
+      return _ref.apply(this, arguments);
+    };
+  }());
+};

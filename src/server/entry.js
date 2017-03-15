@@ -42,17 +42,17 @@ TwitterBot(app, jsonParser);
 Triangly(app, jsonParser);
 
 /**
- * Cache routes
- */
-app.use(cache('30 minutes'));
-
-/**
  * Socketing per application
  */
 io.on('connection', socket => {
   TrianglySockets(socket);
   TwitterBotSockets(socket);
 });
+
+/**
+ * Cache routes
+ */
+app.use(cache('30 minutes'));
 
 /**
  * Main application routing

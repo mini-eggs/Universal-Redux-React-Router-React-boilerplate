@@ -71,16 +71,17 @@ app.use('/styles', _express2.default.static(__dirname + '/../../dist/client/styl
 (0, _triangly2.default)(app, jsonParser);
 
 /**
- * Cache routes
- */
-app.use(cache('30 minutes'));
-
-/**
  * Socketing per application
  */
 io.on('connection', function (socket) {
+  (0, _triangly.TrianglySockets)(socket);
   (0, _twitterBot.TwitterBotSockets)(socket);
 });
+
+/**
+ * Cache routes
+ */
+app.use(cache('30 minutes'));
 
 /**
  * Main application routing
