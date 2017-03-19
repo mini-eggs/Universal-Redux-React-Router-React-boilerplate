@@ -50,7 +50,7 @@ var triangulate = function triangulate(buffer, options) {
 exports.default = function (socket) {
   socket.on('triangly/triangulate/create', function () {
     var _ref = _asyncToGenerator(regeneratorRuntime.mark(function _callee(props) {
-      var image, options, outputBuffer, imageURL;
+      var image, options, outputBuffer, imageURL, fixedOptions, buf, imgUrl;
       return regeneratorRuntime.wrap(function _callee$(_context) {
         while (1) {
           switch (_context.prev = _context.next) {
@@ -70,21 +70,41 @@ exports.default = function (socket) {
               imageURL = _context.sent;
 
               socket.emit('triangly/triangulate/complete', { image: imageURL });
-              _context.next = 15;
+              _context.next = 28;
               break;
 
             case 12:
               _context.prev = 12;
               _context.t0 = _context['catch'](2);
+              _context.prev = 14;
+              fixedOptions = Object.assign({}, options, { blur: defaultOptions.blur });
+              _context.next = 18;
+              return triangulate(Buffer.from(image, 'base64'), fixedOptions);
 
-              socket.emit('triangly/triangulate/failure', { error: _context.t0 });
+            case 18:
+              buf = _context.sent;
+              _context.next = 21;
+              return (0, _shared.UploadImage)(buf.toString('base64'));
 
-            case 15:
+            case 21:
+              imgUrl = _context.sent;
+
+              socket.emit('triangly/triangulate/complete', { image: imgUrl });
+              _context.next = 28;
+              break;
+
+            case 25:
+              _context.prev = 25;
+              _context.t1 = _context['catch'](14);
+
+              socket.emit('triangly/triangulate/failure', { error: _context.t1 });
+
+            case 28:
             case 'end':
               return _context.stop();
           }
         }
-      }, _callee, undefined, [[2, 12]]);
+      }, _callee, undefined, [[2, 12], [14, 25]]);
     }));
 
     return function (_x) {
