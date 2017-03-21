@@ -13,9 +13,7 @@ import RestroomRate from './applications/restroomrate/restroomrate';
 import TwitterBot, {
   TwitterBotSockets
 } from './applications/twitterBot/twitterBot';
-import Triangly, {
-  TrianglySockets
-} from './applications/triangly/triangly';
+import Triangly, { TrianglySockets } from './applications/triangly/triangly';
 
 const app = Express();
 const server: Object = Http.createServer(app);
@@ -63,13 +61,14 @@ Router(app);
 if (process.env.PORT) {
   server.listen(process.env.PORT);
 } else {
-  
   const serverHasStarted = port => {
     console.log(`==> 🌎  http://localhost:${port}/`);
   };
 
   const serverHasNotStarted = err => {
-    console.log('Something went wrong while trying to start the server. Error below:');
+    console.log(
+      'Something went wrong while trying to start the server. Error below:'
+    );
     console.log(err);
   };
 

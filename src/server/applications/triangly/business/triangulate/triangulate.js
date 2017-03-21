@@ -28,27 +28,36 @@ const triangulate = (buffer, options) => {
       .fromBuffer(buffer)
       .toBuffer()
       .then(imageBuffer => {
-        resolve(imageBuffer)
+        resolve(imageBuffer);
       })
       .catch(reject);
   });
 };
 
-export default (socket) => {
-  socket.on('triangly/triangulate/create', async (props) => {
-    const { image } = props
+export default socket => {
+  socket.on('triangly/triangulate/create', async props => {
+    const { image } = props;
     const options = Object.assign({}, defaultOptions, props.options);
+    // flip accuracy because paul is crying
+    options.accuracy = (options.accuracy - 1) * (-1);
     try {
-      const outputBuffer = await triangulate(Buffer.from(image, 'base64'), options);
+      const outputBuffer = await triangulate(
+        Buffer.from(image, 'base64'),
+        options
+      );
       const imageURL = await UploadImage(outputBuffer.toString('base64'));
       socket.emit('triangly/triangulate/complete', { image: imageURL });
-    }
-    catch (err) {
+    } catch (err) {
       // lets use default settings
       // if there is an error
       try {
-        const fixedOptions = Object.assign({}, options, { blur: defaultOptions.blur });
-        const buf = await triangulate(Buffer.from(image, 'base64'), fixedOptions);
+        const fixedOptions = Object.assign({}, options, {
+          blur: defaultOptions.blur
+        });
+        const buf = await triangulate(
+          Buffer.from(image, 'base64'),
+          fixedOptions
+        );
         const imgUrl = await UploadImage(buf.toString('base64'));
         socket.emit('triangly/triangulate/complete', { image: imgUrl });
       } catch (anotherErr) {
@@ -56,5 +65,4 @@ export default (socket) => {
       }
     }
   });
-  
 };

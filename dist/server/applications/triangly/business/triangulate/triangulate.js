@@ -57,54 +57,59 @@ exports.default = function (socket) {
             case 0:
               image = props.image;
               options = Object.assign({}, defaultOptions, props.options);
-              _context.prev = 2;
-              _context.next = 5;
+              // flip accuracty because paul is crying
+
+              options.accuracy = (options.accuracy - 1) * -1;
+              _context.prev = 3;
+              _context.next = 6;
               return triangulate(Buffer.from(image, 'base64'), options);
 
-            case 5:
+            case 6:
               outputBuffer = _context.sent;
-              _context.next = 8;
+              _context.next = 9;
               return (0, _shared.UploadImage)(outputBuffer.toString('base64'));
 
-            case 8:
+            case 9:
               imageURL = _context.sent;
 
               socket.emit('triangly/triangulate/complete', { image: imageURL });
-              _context.next = 28;
+              _context.next = 29;
               break;
 
-            case 12:
-              _context.prev = 12;
-              _context.t0 = _context['catch'](2);
-              _context.prev = 14;
-              fixedOptions = Object.assign({}, options, { blur: defaultOptions.blur });
-              _context.next = 18;
+            case 13:
+              _context.prev = 13;
+              _context.t0 = _context['catch'](3);
+              _context.prev = 15;
+              fixedOptions = Object.assign({}, options, {
+                blur: defaultOptions.blur
+              });
+              _context.next = 19;
               return triangulate(Buffer.from(image, 'base64'), fixedOptions);
 
-            case 18:
+            case 19:
               buf = _context.sent;
-              _context.next = 21;
+              _context.next = 22;
               return (0, _shared.UploadImage)(buf.toString('base64'));
 
-            case 21:
+            case 22:
               imgUrl = _context.sent;
 
               socket.emit('triangly/triangulate/complete', { image: imgUrl });
-              _context.next = 28;
+              _context.next = 29;
               break;
 
-            case 25:
-              _context.prev = 25;
-              _context.t1 = _context['catch'](14);
+            case 26:
+              _context.prev = 26;
+              _context.t1 = _context['catch'](15);
 
               socket.emit('triangly/triangulate/failure', { error: _context.t1 });
 
-            case 28:
+            case 29:
             case 'end':
               return _context.stop();
           }
         }
-      }, _callee, undefined, [[2, 12], [14, 25]]);
+      }, _callee, undefined, [[3, 13], [15, 26]]);
     }));
 
     return function (_x) {

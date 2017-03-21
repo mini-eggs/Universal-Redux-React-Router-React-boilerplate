@@ -92,7 +92,6 @@ app.use(cache('30 minutes'));
 if (process.env.PORT) {
   server.listen(process.env.PORT);
 } else {
-
   var serverHasStarted = function serverHasStarted(port) {
     console.log('==> \uD83C\uDF0E  http://localhost:' + port + '/');
   };

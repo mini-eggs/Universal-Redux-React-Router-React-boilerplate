@@ -14,7 +14,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 exports.TrianglySockets = _sockets2.default;
 
 exports.default = function (app, parser) {
-
   app.all('/triangly', function (req, res) {
     res.json({ message: 'welcome to triangly server' });
   });
