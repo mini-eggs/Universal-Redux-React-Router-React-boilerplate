@@ -17,8 +17,13 @@ export default image => {
 
     Request(options, (error, response, buffer) => {
       if (error) reject(err);
-      const link = JSON.parse(response.body).data.link;
-      resolve(link.replace('http://', 'https://'));
+      /* parse will sometimes fail */
+      try {
+        const link = JSON.parse(response.body).data.link;
+        resolve(link.replace('http://', 'https://'));
+      } catch(err) {
+        reject(err)
+      }
     });
   });
 };
