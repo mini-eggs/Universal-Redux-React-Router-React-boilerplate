@@ -61,7 +61,18 @@ export default socket => {
         const imgUrl = await UploadImage(buf.toString('base64'));
         socket.emit('triangly/triangulate/complete', { image: imgUrl });
       } catch (anotherErr) {
-        socket.emit('triangly/triangulate/failure', { error: anotherErr });
+        /* last try, default all the settings */
+        try {
+          const buf = await triangulate(
+            Buffer.from(image, 'base64'),
+            defaultOptions
+          );
+          const imgUrl = await UploadImage(buf.toString('base64'));
+          socket.emit('triangly/triangulate/complete', { image: imgUrl });
+        }
+        catch (err) {
+          socket.emit('triangly/triangulate/failure', { error: anotherErr });
+        }
       }
     }
   });

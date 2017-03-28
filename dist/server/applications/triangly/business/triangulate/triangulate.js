@@ -50,7 +50,8 @@ var triangulate = function triangulate(buffer, options) {
 exports.default = function (socket) {
   socket.on('triangly/triangulate/create', function () {
     var _ref = _asyncToGenerator(regeneratorRuntime.mark(function _callee(props) {
-      var image, options, outputBuffer, imageURL, fixedOptions, buf, imgUrl;
+      var image, options, outputBuffer, imageURL, fixedOptions, buf, imgUrl, _buf, _imgUrl;
+
       return regeneratorRuntime.wrap(function _callee$(_context) {
         while (1) {
           switch (_context.prev = _context.next) {
@@ -73,7 +74,7 @@ exports.default = function (socket) {
               imageURL = _context.sent;
 
               socket.emit('triangly/triangulate/complete', { image: imageURL });
-              _context.next = 29;
+              _context.next = 41;
               break;
 
             case 13:
@@ -95,21 +96,40 @@ exports.default = function (socket) {
               imgUrl = _context.sent;
 
               socket.emit('triangly/triangulate/complete', { image: imgUrl });
-              _context.next = 29;
+              _context.next = 41;
               break;
 
             case 26:
               _context.prev = 26;
               _context.t1 = _context['catch'](15);
+              _context.prev = 28;
+              _context.next = 31;
+              return triangulate(Buffer.from(image, 'base64'), defaultOptions);
+
+            case 31:
+              _buf = _context.sent;
+              _context.next = 34;
+              return (0, _shared.UploadImage)(_buf.toString('base64'));
+
+            case 34:
+              _imgUrl = _context.sent;
+
+              socket.emit('triangly/triangulate/complete', { image: _imgUrl });
+              _context.next = 41;
+              break;
+
+            case 38:
+              _context.prev = 38;
+              _context.t2 = _context['catch'](28);
 
               socket.emit('triangly/triangulate/failure', { error: _context.t1 });
 
-            case 29:
+            case 41:
             case 'end':
               return _context.stop();
           }
         }
-      }, _callee, undefined, [[3, 13], [15, 26]]);
+      }, _callee, undefined, [[3, 13], [15, 26], [28, 38]]);
     }));
 
     return function (_x) {
