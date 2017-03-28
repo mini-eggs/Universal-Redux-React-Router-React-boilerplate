@@ -57,7 +57,7 @@ exports.default = function (socket) {
             case 0:
               image = props.image;
               options = Object.assign({}, defaultOptions, props.options);
-              // flip accuracty because paul is crying
+              // flip accuracy because paul is crying
 
               options.accuracy = (options.accuracy - 1) * -1;
               _context.prev = 3;

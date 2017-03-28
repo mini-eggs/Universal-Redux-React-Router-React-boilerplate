@@ -27,8 +27,13 @@ exports.default = function (image) {
 
     (0, _request2.default)(options, function (error, response, buffer) {
       if (error) reject(err);
-      var link = JSON.parse(response.body).data.link;
-      resolve(link.replace('http://', 'https://'));
+      /* parse will sometimes fail */
+      try {
+        var link = JSON.parse(response.body).data.link;
+        resolve(link.replace('http://', 'https://'));
+      } catch (err) {
+        reject(err);
+      }
     });
   });
 };
